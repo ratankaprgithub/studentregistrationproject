@@ -15,7 +15,7 @@
 
 <a href="getACourse">View Course Details by Name</a><br><br>
 
-<a>View All Courses</a><br><br>
+<a href="getAllCourses">View All Courses</a><br><br>
 
 
 </body>

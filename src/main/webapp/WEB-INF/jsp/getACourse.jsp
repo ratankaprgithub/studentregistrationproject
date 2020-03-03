@@ -8,13 +8,26 @@
 </head>
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <body>
 
-<f:form method="get" action="getCourseDetails">
+
+<c:choose>
+
+<c:when test="${courses eq null }">
+
+<h2>No Course Found</h2>
+
+</c:when>
+
+<c:otherwise>
+
+<f:form method="get" action="getCourseDetails" modelAttribute="course">
 
 Select Course :
 
-<f:select name="cname">
+<f:select path="courseName">
 <f:options items="${courses }"/>
 
 </f:select>
@@ -22,5 +35,11 @@ Select Course :
 <input type="submit" value="Get">
 
 </f:form>
+
+</c:otherwise>
+
+</c:choose>
+
+
 </body>
 </html>

@@ -9,8 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GeneratorType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="course")
@@ -18,11 +21,15 @@ public class CourseBean implements Serializable{
 	
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer course_Id;
 	@Id
-	private String course_Name;
+	private Integer courseId;
+
+	private String courseName;
 	private String duration;
 	private Integer fee;
+	
+
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date startDate;
 	private Integer capacity;
 	private Integer availability;
@@ -43,23 +50,23 @@ public class CourseBean implements Serializable{
 	}
 
 
-	public Integer getCourse_Id() {
-		return course_Id;
+	public Integer getCourseId() {
+		return courseId;
 	}
 
 
-	public void setCourse_Id(Integer course_Id) {
-		this.course_Id = course_Id;
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
 	}
 
 
-	public String getCourse_Name() {
-		return course_Name;
+	public String getCourseName() {
+		return courseName;
 	}
 
 
-	public void setCourse_Name(String course_Name) {
-		this.course_Name = course_Name;
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 
 
@@ -103,11 +110,11 @@ public class CourseBean implements Serializable{
 	}
 
 
-	public CourseBean(Integer course_Id, String course_Name, String duration, Integer fee, Date startDate,
+	public CourseBean(Integer courseId, String courseName, String duration, Integer fee, Date startDate,
 			Integer capacity, Integer availability) {
 		super();
-		this.course_Id = course_Id;
-		this.course_Name = course_Name;
+		this.courseId = courseId;
+		this.courseName = courseName;
 		this.duration = duration;
 		this.fee = fee;
 		this.startDate = startDate;
