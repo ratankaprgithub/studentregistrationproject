@@ -81,8 +81,7 @@ public class CourseController {
 	@PostMapping("/createCourse")
 	public String createCourse(CourseBean course,Model m) {
 
-		System.out.println(course.getStartDate());
-		
+
 		course.setAvailability(course.getCapacity());
 		
 		CourseBean c= cdao.save(course);

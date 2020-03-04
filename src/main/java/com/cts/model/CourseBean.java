@@ -1,13 +1,17 @@
 package com.cts.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Generated;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,6 +38,23 @@ public class CourseBean implements Serializable{
 	private Integer capacity;
 	private Integer availability;
 	
+	
+	@ManyToMany(mappedBy = "courses",fetch = FetchType.LAZY)
+	private List<StudentBean> students=new ArrayList<StudentBean>();
+	
+	
+	
+	
+
+	public List<StudentBean> getStudents() {
+		return students;
+	}
+
+
+	public void setStudents(List<StudentBean> students) {
+		this.students = students;
+	}
+
 
 	public Integer getAvailability() {
 		return availability;
@@ -111,7 +132,7 @@ public class CourseBean implements Serializable{
 
 
 	public CourseBean(Integer courseId, String courseName, String duration, Integer fee, Date startDate,
-			Integer capacity, Integer availability) {
+			Integer capacity, Integer availability, List<StudentBean> students) {
 		super();
 		this.courseId = courseId;
 		this.courseName = courseName;
@@ -120,7 +141,9 @@ public class CourseBean implements Serializable{
 		this.startDate = startDate;
 		this.capacity = capacity;
 		this.availability = availability;
+		this.students = students;
 	}
+
 
 
 	

@@ -22,6 +22,7 @@ public interface CourseDao extends JpaRepository<CourseBean,Integer>{
 	@Query("select c.capacity from CourseBean c where c.courseId=:id")
 	public int getCapacityByCourseID(int id);
 	
+
 	
 	
 }
